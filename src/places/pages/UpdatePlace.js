@@ -40,6 +40,7 @@ const UpdatePlace = () => {
   useEffect(() => {
     const fetchPlace = async () => {
       try {
+        // get doesn't need authorization
         const responseData = await sendRequest(
           `http://localhost:4000/api/places/${placeId}`
         );
@@ -75,7 +76,7 @@ const UpdatePlace = () => {
           title: formState.inputs.title.value,
           description: formState.inputs.description.value,
         }),
-        { "Content-Type": "application/json" }
+        { "Content-Type": "application/json", Authorization: "Bearer " + auth.token }
       );
       history.push("/" + auth.userId + "/places");
     } catch (error) {}

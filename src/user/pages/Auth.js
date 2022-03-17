@@ -85,7 +85,7 @@ const Auth = () => {
           }),
           { "Content-Type": "application/json" }
         );
-        auth.login(responseData.user.id); // login for frontend
+        auth.login(responseData.userId, responseData.token); // login for frontend
       } catch (error) {}
     } else {
       try {
@@ -101,7 +101,7 @@ const Auth = () => {
           formData // don't need to set headers with formData
         );
 
-        auth.login(responseData.user.id); // login for frontend
+        auth.login(responseData.userId, responseData.token); // login for frontend
       } catch (error) {}
     }
   };
